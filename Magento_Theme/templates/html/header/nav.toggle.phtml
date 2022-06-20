@@ -1,0 +1,95 @@
+<?php
+/** @var \Magento\Framework\App\ObjectManager $om */
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+/** @var \Magento\Framework\App\Http\Context $context */
+$context = $objectManager->get('Magento\Framework\App\Http\Context');
+/** @var bool $isLoggedIn */
+
+//Retornar se o usuário está ou não logado
+$isLoggedIn = $context->getValue(\Magento\Customer\Model\Context::CONTEXT_AUTH);
+// Retornar nome do camarada
+//$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$customerSession = $objectManager->create('Magento\Customer\Model\Session');
+
+if ($customerSession->isLoggedIn()) {
+    $customerSession->getCustomerId();  // get Customer Id
+    $customerSession->getCustomerGroupId();
+    $customerSession->getCustomer();
+    $customerSession->getCustomerData();
+    $fullName = $customerSession->getCustomer()->getName();
+    //echo 'Full name:'.$customerSession->getCustomer()->getName();  // get  Full Name
+    //echo 'Email:'.$customerSession->getCustomer()->getEmail(); // get Email
+}
+
+//$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+$storeManager->getStore()->getBaseUrl();
+$base_url = $storeManager->getStore()->getBaseUrl();
+
+?>
+
+
+<div class="authentication-wrapper" data-block="authentication">
+    <a href="javascript:;"
+       class="action action-auth-toggle fa-user-web"
+       data-trigger="authentication">
+        <i class="far fa-user"></i>
+    </a>
+    <a class="action action-auth-toggle fa-user-mobile" href="/customer/account/"><i class="far fa-user"></i></a>
+    <div class="block-authentication"
+         style="display: none"
+         data-bind="mageInit: {
+            'Magento_Ui/js/modal/modal':{
+                'type': 'custom',
+                'modalClass': 'authentication-dropdown',
+                'trigger': '[data-trigger=authentication]',
+                'wrapperClass': 'authentication-wrapper',
+                'parentModalClass': '_has-modal-custom _has-auth-shown',
+                'responsive': true,
+                'responsiveClass': 'custom-slide',
+                'overlayClass': 'dropdown-overlay modal-custom-overlay',
+                'buttons': []
+            }}">
+        <div class="btn-top-action">
+            <?php if(!$isLoggedIn): ?>
+                <ul class="list-actions">
+                    <li>
+                        <span class="item"><a href="<?php echo $base_url; ?>customer/account/logout/">Entrar</a></span>
+                    </li>
+                    <li>
+                        <span class="item"><a href="<?php echo $base_url; ?>customer/account/create/">Criar uma conta</a></span>
+                    </li>
+                    <li>
+                        <span class="item"><a href="<?php echo $base_url; ?>wishlist/">Lista de desejos</a></span>
+                    </li>
+                </ul>
+            <?php else: ?>
+                <ul class="list-actions">
+                    <li>
+                        <span class="item"><a href="<?php echo $base_url; ?>customer/account/">Minha Conta</a></span>
+                    </li>
+                    <li>
+                        <span class="item"><a href="<?php echo $base_url; ?>wishlist/">Lista de desejos</a></span>
+                    </li>
+                    <li>
+                        <span class="item"><a href="<?php echo $base_url; ?>customer/account/logout/">Sair</a></span>
+                    </li>
+                </ul>
+            <?php endif ?>
+        </div>
+    </div>
+</div>
+<div class="wish-list">
+    <a href="<?php echo $base_url; ?>wishlist/"
+       class="action action-wish-list-toggle"
+       data-trigger="wish-list">
+        <i class="far fa-heart" aria-hidden="true"></i>
+    </a>
+</div>
+<div class="marketplace">
+    <a href="<?php echo $base_url; ?>em-breve-novidade/"
+       class="action">
+<!--       data-trigger="wish-list"-->
+        <img src='<?php echo $this->getViewFileUrl('Magento_Theme::images/shop-marketplace.png'); ?>'/>
+    </a>
+</div>

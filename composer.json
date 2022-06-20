@@ -1,0 +1,11 @@
+{
+    "name": "genesisoft/apollo",
+    "description": "Tema Magento2",
+    "type": "magento2-theme",
+    "license": [
+        "MIT"
+    ],
+    "autoload": {
+        "files": [ "registration.php" ]
+    }
+}

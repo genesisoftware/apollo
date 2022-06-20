@@ -1,0 +1,251 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="page.top">
+            <referenceBlock name="navigation.sections">
+                <referenceBlock name="store.menu">
+                    <arguments>
+                        <argument name="title" translate="true" xsi:type="string" ></argument>
+                    </arguments>
+                    <block class="Magento\Framework\View\Element\Text" name="buy-online" before="-">
+                        <arguments>
+                            <argument translate="true" name="text" xsi:type="string">
+                                <![CDATA[<a class="buy-online-nav" href="/loja-online.html">Compre Online</a>]]>
+                            </argument>
+                        </arguments>
+                    </block>
+                </referenceBlock>
+            </referenceBlock>
+        </referenceContainer>
+        <referenceContainer name="header-wrapper" htmlTag="div" htmlClass="page-header-container container">
+            <container name="buyonlinetop" htmlTag="div" htmlClass="buy-online block-0" after="-">
+                <block class="Magento\Framework\View\Element\Template" name="buyonline" template="Magento_Theme::html/header/buy.phtml"/>
+            </container>
+            <container name="header.logo" htmlTag="div" htmlClass="logo block-1" after="header.buy"></container>
+            <container name="header.search" htmlTag="div" htmlClass="search block-2" after="header.logo">
+                <container name="header.search.block" htmlTag="div" htmlClass="header-search-block" after="-">
+                    <block class="Magento\Cms\Block\Block" name="search.menu" after="-">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">search_menu</argument>
+                        </arguments>
+                    </block>
+                </container>
+            </container>
+
+            <container name="header.account" htmlTag="div" htmlClass="account block-3" after="-">
+                <block class="Magento\Cms\Block\Block" name="header.account_block" after="-">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">account_top</argument>
+                    </arguments>
+                </block>
+            </container>
+
+            <container name="navbar.header" htmlTag="div" htmlClass="menu-account">
+                <block class="Magento\Framework\View\Element\Template" name="nav.toggle"
+                       template="Magento_Theme::html/header/nav.toggle.phtml" before="-">
+                    <arguments>
+                        <argument name="toggle_id" xsi:type="string">wg-navbar-collapse</argument>
+                    </arguments>
+                </block>
+            </container>
+            <container name="header.toplinks" htmlTag="div" htmlClass="minicart block-4" after="-">
+                <container name="header.cart.row" htmlTag="div" htmlClass="row" after="-">
+                    <container name="header.lojas" htmlTag="div" htmlClass="header-lojas" after="-">
+                        <block class="Magento\Cms\Block\Block" name="header.lojas.block" after="-">
+                            <arguments>
+                                <argument name="block_id" xsi:type="string">header_lojas</argument>
+                            </arguments>
+                        </block>
+                    </container>
+                    <container name="header.favoritos" htmlTag="div" htmlClass="header-favoritos col-md-4 col-xs-4" after="-"></container>
+                    <container name="header.cart" htmlTag="div" htmlClass="header-cart col-md-4 col-xs-4" after="-"></container>
+                </container>
+            </container>
+        </referenceContainer>
+
+        <referenceContainer name="header.panel" htmlClass="header panel block-5">
+            <container name="div.topo.additional" htmlTag="div" htmlClass="topo topo-additional" before="header.links">
+                <container name="topo.additional" as="topo_additional" label="Topo Additional"/>
+            </container>
+
+            <container name="header.menus" htmlTag="div" htmlClass="header menus" after="-">
+                <block class="Magento\Cms\Block\Block" name="header.menus_top" after="-">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">header_menus</argument>
+                    </arguments>
+                </block>
+            </container>
+            <!--
+            <block class="Magento\Framework\View\Element\Html\Links" name="header.links">
+                <arguments>
+                    <argument name="css_class" xsi:type="string">header links</argument>
+                </arguments>
+            </block>
+            -->
+        </referenceContainer>
+
+        <referenceBlock name="logo">
+             <arguments>
+                <argument name="logo_img_width" xsi:type="number">139</argument>
+                <argument name="logo_img_height" xsi:type="number">21</argument>
+                <!-- <argument name="logo_src" xsi:type="string">apollo/web/images/logo.svg</argument> -->
+            </arguments>
+        </referenceBlock>
+
+        <block class="Magento\Framework\View\Element\Template" name="catalog.compare.link" before="-"
+               template="Magento_Catalog::product/compare/link.phtml">
+        </block>
+
+        <referenceContainer name="footer-container">
+            <container name="footer" as="footer" label="Page Footer" htmlTag="div" htmlClass="footer content">
+
+                <container name="footer.um" htmlTag="div" htmlClass="footer-um" after="-">
+                    <block class="Magento\Cms\Block\Block" name="footer.pos.um" after="-">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">footer_um</argument>
+                        </arguments>
+                    </block>
+                </container>
+
+                <container name="footer.dois" htmlTag="div" htmlClass="footer-dois" after="-">
+                    <block class="Magento\Cms\Block\Block" name="footer.pos.dois" after="-">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">footer_dois</argument>
+                        </arguments>
+                    </block>
+                </container>
+
+                <container name="footer.tres" htmlTag="div" htmlClass="footer-tres" after="-">
+                    <block class="Magento\Cms\Block\Block" name="footer.pos.tres" after="-">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">footer_tres</argument>
+                        </arguments>
+                    </block>
+                </container>
+
+                <container name="footer.quatro" htmlTag="div" htmlClass="footer-quatro" after="-">
+                    <block class="Magento\Cms\Block\Block" name="footer.pos.quatro" after="-">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">footer_quatro</argument>
+                        </arguments>
+                    </block>
+                </container>
+
+                <container name="footer.cinco" htmlTag="div" htmlClass="footer-cinco" after="-">
+                    <block class="Magento\Cms\Block\Block" name="footer.pos.cinco" after="-">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">footer_cinco</argument>
+                        </arguments>
+                    </block>
+                </container>
+
+                <container name="footer.seis" htmlTag="div" htmlClass="footer-seis" after="-">
+                    <block class="Magento\Cms\Block\Block" name="footer.pos.seis" after="-">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">footer_seis</argument>
+                        </arguments>
+                    </block>
+                </container>
+
+                <container name="footer.newsletter" htmlTag="div" htmlClass="footer-quatro footer-quatro-newsletter" after="footer.quatro">
+                    <block class="Magento\Newsletter\Block\Subscribe" name="form.subscribe" as="subscribe" before="-" template="Magento_Newsletter::subscribe.phtml" ifconfig="newsletter/general/active">
+                        <container name="form.additional.info.subscribe" as="form_additional_info_subscribe"/>
+                    </block>
+                    <referenceContainer name="form.additional.info.subscribe">
+                        <block class="MSP\ReCaptcha\Block\Frontend\ReCaptcha" name="msp-recaptcha-subscribe" after="-"
+                               template="MSP_ReCaptcha::msp_recaptcha.phtml"
+                               cacheable="false"
+                               ifconfig="msp_securitysuite_recaptcha/frontend/enabled">
+
+                            <arguments>
+                                <argument name="jsLayout" xsi:type="array">
+                                    <item name="components" xsi:type="array">
+                                        <item name="msp-recaptcha" xsi:type="array">
+                                            <item name="component" xsi:type="string">MSP_ReCaptcha/js/reCaptcha</item>
+                                            <item name="zone" xsi:type="string">login</item>
+                                        </item>
+                                    </item>
+                                </argument>
+                            </arguments>
+                        </block>
+                    </referenceContainer>
+                </container>
+
+                <container name="footer.cinco" htmlTag="div" htmlClass="footer-cinco" after="-">
+                    <block class="Magento\Cms\Block\Block" name="footer.pos.cinco" after="-">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">footer_cinco</argument>
+                        </arguments>
+                    </block>
+                </container>
+
+                <container name="footer.seis" htmlTag="div" htmlClass="footer-seis" after="-">
+                    <block class="Magento\Cms\Block\Block" name="footer.pos.seis" after="-">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">footer_seis</argument>
+                        </arguments>
+                    </block>
+                </container>
+
+                <container name="footer.sete" htmlTag="div" htmlClass="footer-sete" after="-">
+                    <block class="Magento\Cms\Block\Block" name="footer.pos.sete" after="-">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">footer_sete</argument>
+                        </arguments>
+                    </block>
+                </container>
+
+                <container name="footer.oito" htmlTag="div" htmlClass="footer-oito" after="-">
+                    <block class="Magento\Cms\Block\Block" name="footer.pos.oito" after="-">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">footer_oito</argument>
+                        </arguments>
+                    </block>
+                </container>
+
+                <container name="footer.nove" htmlTag="div" htmlClass="footer-nove" after="-">
+                    <block class="Magento\Cms\Block\Block" name="footer.pos.nove" after="-">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">footer_nove</argument>
+                        </arguments>
+                    </block>
+                </container>
+
+                <block class="Magento\Cms\Block\Block" name="footer_menu">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">footer_menu</argument>
+                    </arguments>
+                </block>
+
+                <container name="footer.copyright" htmlTag="div" htmlClass="footer-copyright" after="-">
+                    <block class="Magento\Theme\Block\Html\Footer" name="copyright" template="html/copyright.phtml" after="-" />
+                </container>
+
+                <container name="footer.ass" htmlTag="div" htmlClass="footer-ass" after="-">
+                    <block class="Magento\Cms\Block\Block" name="footer.ass.genesisoft">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">footer_ass</argument>
+                        </arguments>
+                    </block>
+                </container>
+
+            </container>
+        </referenceContainer>
+
+        <move element="logo" destination="header.logo"/>
+        <move element="top.search" destination="header.search" />
+        <move element="navbar.header" destination="header.account" />
+        <move element="minicart" destination="header.cart" />
+        <move element="navigation.sections" destination="header-wrapper" />
+        <move element="header.panel" destination="header-wrapper" />
+        <move element="footer.ass" destination="footer.copyright.bt" />
+        <!-- <move element="header.menus" destination="header.account" /> -->
+
+        <!-- <referenceBlock name="panel.header" remove="true"/> -->
+
+        <referenceBlock name="top.links" remove="true" />
+        <referenceBlock name="report.bugs" remove="true"/>
+        <referenceBlock name="store.links" remove="true"/>
+        <!--<referenceBlock name="page.main.title" display="false"/>-->
+    </body>
+</page>

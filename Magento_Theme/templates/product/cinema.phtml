@@ -1,0 +1,36 @@
+<?php    
+    $_product = $block->getProduct();
+    $estreia = $_product->getCinemaEstreia();
+    $atributos = $_product->getCinema();
+    $link = $_product->getCinemaLink();
+?>
+<?php if($estreia):?>
+    <div class="cinema-estreia">
+        <?php echo $estreia; ?>
+    </div>
+<?php endif; ?>
+
+<?php if($atributos):?>
+    <div class="cinema-atributos">
+        <?php echo $atributos ?>
+    </div>
+<?php endif; ?>
+
+<?php if($link):?>
+    <div class="cinema-link">
+        <a href="<?php echo $link; ?>" target="_blank"><i class="fas fa-ticket-alt"></i> Comprar ingresso online</a>
+    </div>
+<?php endif; ?>
+
+<?php if($atributos):?>
+    <script>
+    require(['jquery'],
+        function ($) {
+            $(document).ready(function() {            
+                $('.product-info-main .product-info-price, .product-info-main .product-add-form, .product.info.detailed, .product-social-links').hide();
+                $('#block-upsell-heading').html('Todos os filmes');
+                $('.products-upsell').addClass('cinema-upsell');
+            });
+        });
+    </script>
+<?php endif; ?>

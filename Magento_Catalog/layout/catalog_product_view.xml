@@ -1,0 +1,15 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <referenceContainer name="product.info.main">
+                <container name="description.top" htmlTag="div" htmlClass="description-top" before="product.info.price"></container>
+                <container name="product.info.cinema" label="Product cinema" htmlTag="div" htmlClass="product-info-cinema">
+                    <block class="Magento\Catalog\Block\Product\View\Description" name="product.info.cinema.block" after="-" template="Magento_Theme::product/cinema.phtml" />
+                </container>
+            </referenceContainer>
+            <referenceBlock name="product.info.review" remove="true" />
+        </referenceContainer>
+        <move element="product.info.overview" destination="description.top" after="-" />
+    </body>
+</page>
